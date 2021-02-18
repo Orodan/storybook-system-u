@@ -5,12 +5,13 @@ export default {
   argTypes: {
     color: { control: { type: 'select', options: ['primary', 'secondary'] } },
     size: { control: { type: 'select', options: ['small', 'large'] } },
+    content: { name: 'slot' }
   },
   args: {
     color: 'primary',
     size: 'large',
     disabled: false,
-    slot: 'zenbox-button'
+    content: 'zenbox-button'
   }
 }
 
@@ -18,7 +19,11 @@ const Template = (args, { argTypes }) => {
   return {
     components: { ZenboxButton },
     props: Object.keys(argTypes),
-    template: '<zenbox-button v-bind="$props">{{ $props.slot }}</zenbox-button>'
+    template: `
+      <zenbox-button :color="$props.color" :size="$props.size" :disabled="$props.disabled">
+        {{ $props.content }}
+      </zenbox-button>
+    `
   }
 }
 
