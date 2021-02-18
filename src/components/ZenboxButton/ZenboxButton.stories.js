@@ -9,7 +9,8 @@ export default {
   args: {
     color: 'primary',
     size: 'large',
-    disabled: false
+    disabled: false,
+    slot: 'zenbox-button'
   }
 }
 
@@ -17,7 +18,7 @@ const Template = (args, { argTypes }) => {
   return {
     components: { ZenboxButton },
     props: Object.keys(argTypes),
-    template: '<zenbox-button v-bind="$props" />'
+    template: '<zenbox-button v-bind="$props">{{ $props.slot }}</zenbox-button>'
   }
 }
 
